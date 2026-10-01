@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia? ❤️</title>
+    <style>
+        /* Importar tipografía moderna y fluida */
+        @import url('https://googleapis.com');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #ffccd5 0%, #ff4d6d 100%);
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            text-align: center;
+            perspective: 1000px; /* Habilita el entorno tridimensional */
+        }
+
+        /* Tarjeta contenedora con profundidad 3D y Glassmorphism */
+        .contenedor-3d {
+            background: rgba(255, 255, 255, 0.45);
+            padding: 40px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            /* Sombra doble para efecto flotante real */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 
+                        inset 0 4px 10px rgba(255, 255, 255, 0.4);
+            z-index: 10;
+            max-width: 85%;
+            width: 380px;
+            transform: rotateX(10deg) rotateY(-5deg); /* Inclinación de cámara */
+            transition: transform 0.5s ease;
+        }
+
+        .contenedor-3d:hover {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+        }
+
+        /* Icono 3D Dinámico hecho con puro código */
+        .avatar-3d {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+        }
+
+        .svg-icon {
+            width: 100%;
+            height: 100%;
+            animation: flotar 3s infinite ease-in-out;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 35px;
+            text-shadow: 0 4px 8px rgba(216, 17, 89, 0.5);
+            line-height: 1.3;
+        }
+
+        /* Estructura de botones tridimensionales */
+        .botones-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            height: 70px;
+            position: relative;
+        }
+
+        button {
+            padding: 14px 35px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Efecto de botón físico extruido (3D Real) */
+        #si {
+            background: #2ec4b6;
+            color: white;
+            box-shadow: 0 8px 0 #1fa396, 0 15px 20px rgba(0,0,0,0.2);
+        }
+
+        #si:hover {
+            background: #33d6c7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #1fa396, 0 18px 25px rgba(0,0,0,0.25);
+        }
+
+        #si:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #1fa396, 0 5px 10px rgba(0,0,0,0.15);
+        }
+
+        #no {
+            background: #e63946;
+            color: white;
+            box-shadow: 0 8px 0 #b81d2a, 0 15px 20px rgba(0,0,0,0.2);
+            position: absolute;
+        }
+
+        /* Partículas tridimensionales flotantes en capas */
+        .corazon-3d {
+            position: absolute;
+            top: -50px;
+            pointer-events: none;
+            animation: caer3d linear forwards;
+        }
+
+        @keyframes caer3d {
+            0% {
+                transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            100% {
+                transform: translateY(110vh) rotateX(360deg) rotateY(720deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lluvia tridimensional en capas (Z-index controlado) -->
+    <script>
+        function crearParticulaRomantica() {
+            const corazon = document.createElement('div');
+            corazon.classList.add('corazon-3d');
+            
+            // Genera variaciones estéticas
+            const modelos = ['❤️', '💖', '💝', '✨'];
+            corazon.innerText = modelos[Math.floor(Math.random() * modelos.length)];
+            
+            // Ubicación y capas de profundidad (delante o detrás de la tarjeta)
+            corazon.style.left = Math.random() * 100 + 'vw';
+            const profundidad = Math.random() > 0.5 ? 20 : 5; 
+            corazon.style.zIndex = profundidad;
+            
+            // Tamaños y velocidades aleatorias para realismo de cámara
+            corazon.style.fontSize = Math.random() * 25 + 15 + 'px';
+            corazon.style.animationDuration = Math.random() * 4 + 3 + 's';
+            corazon.style.filter = `blur(${Math.random() * 2}px)`;
+
+            document.body.appendChild(corazon);
+            setTimeout(() => { corazon.remove(); }, 7000);
+        }
+        setInterval(crearParticulaRomantica, 200);
+    </script>
+
+    <!-- Caja de cristal 3D -->
+    <div class="contenedor-3d">
+        <div class="avatar-3d">
+            <!-- Gráfico Vectorial 3D integrado (Oso amoroso nativo) -->
+            <svg id="visual-svg" class="svg-icon" viewBox="0 0 100 100">
+                <circle cx="30" cy="35" r="14" fill="#f4a261"/>
+                <circle cx="70" cy="35" r="14" fill="#f4a261"/>
+                <circle cx="30" cy="35" r="7" fill="#e76f51"/>
+                <circle cx="70" cy="35" r="7" fill="#e76f51"/>
+                <circle cx="50" cy="55" r="28" fill="#e9c46a"/>
+                <ellipse cx="50" cy="62" rx="14" ry="10" fill="#ffffff"/>
+                <circle cx="40" cy="52" r="3.5" fill="#264653"/>
+                <circle cx="60" cy="52" r="3.5" fill="#264653"/>
+                <polygon points="46,60 54,60 50,64" fill="#264653"/>
+            </svg>
+        </div>
+        
+        <h1 id="titulo">¿Quieres ser mi novia? ❤️</h1>
+        
+        <div class="botones-container">
+            <button id="si" onclick="sistemaAceptar()">Sí</button>
+            <button id="no" onmouseover="escaparCaotico()" onclick="escaparCaotico()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Algoritmo de evasión perfecta para pantallas táctiles y ratón
+        function escaparCaotico() {
+            const btnNo = document.getElementById('no');
+            const margenSeguridad = 30;
+            
+            const maxX = window.innerWidth - btnNo.offsetWidth - margenSeguridad;
+            const maxY = window.innerHeight - btnNo.offsetHeight - margenSeguridad;
+            
+            btnNo.style.position = 'fixed';
+            
+            const coordenadaX = Math.random() * (maxX - margenSeguridad) + margenSeguridad;
+            const coordenadaY = Math.random() * (maxY - margenSeguridad) + margenSeguridad;
+            
+            btnNo.style.left = coordenadaX + 'px';
+            btnNo.style.top = coordenadaY + 'px';
+            
+            // Pequeña distorsión física al huir
+            btnNo.style.transform = `scale(0.9) rotate(${Math.random() * 20 - 10}deg)`;
+        }
+
+        // Animación final explosiva al aceptar
+        function sistemaAceptar() {
+            document.getElementById('titulo').innerHTML = '¡Siii! Sabía que dirías que sí 🥰<br><span style="font-size: 18px; font-weight: normal; opacity: 0.9;">¡Te amo con todo mi corazón! 💖</span>';
+            
+            // Transforma el gráfico nativo en un super corazón latiendo
+            document.getElementById('visual-svg').innerHTML = `
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff0054" transform="scale(3.5) translate(3, 2)"/>
+            `;
+            document.getElementById('visual-svg').style.animation = 'flotar 0.6s infinite alternate ease-in-out';
+            
+            // Elimina la interfaz de decisión
+            document.getElementById('si').style.display = 'none';
+            document.getElementById('no').style.display = 'none';
+            
+            // Multiplica la densidad de partículas tridimensionales
+            setInterval(crearParticulaRomantica, 30);
+        }
+    </script>
+</body>
+</html>
